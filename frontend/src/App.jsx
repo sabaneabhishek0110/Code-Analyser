@@ -91,8 +91,9 @@ function App() {
     setLoading(true);
     setError(null);
     try {
+        const baseURL = import.meta.env.VITE_BACKEND_URL || '';
         const sanitizedCode = code.replace(/\r/g, '');
-        const response = await axios.post('/api/analyze', { problemStatement, code: sanitizedCode});
+        const response = await axios.post(`${baseURL}/api/analyze`, { problemStatement, code: sanitizedCode});
         setResults(response.data);
     } catch (err) {
       setError(`Error: ${err.response?.data?.message || err.message}`);
