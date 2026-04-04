@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
       proxy: {
         '/api': {
           // Use the target from .env, fallback to localhost:8080 if not found
-          target: env.VITE_PROXY_TARGET || 'http://localhost:8080',
+          target: env.VITE_BACKEND_URL || 'http://localhost:8080',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, '/api')
         }

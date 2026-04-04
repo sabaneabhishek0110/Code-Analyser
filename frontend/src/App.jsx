@@ -91,9 +91,8 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-        const apiUrl = import.meta.env.VITE_API_URL;
         const sanitizedCode = code.replace(/\r/g, '');
-        const response = await axios.post(`${apiUrl}/analyze`, { problemStatement, code: sanitizedCode});
+        const response = await axios.post('/api/analyze', { problemStatement, code: sanitizedCode});
         setResults(response.data);
     } catch (err) {
       setError(`Error: ${err.response?.data?.message || err.message}`);
